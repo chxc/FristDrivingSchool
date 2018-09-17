@@ -10,6 +10,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
+import android.support.design.widget.TabLayout;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import intro.com.fristdrivingschool.R;
 
@@ -118,6 +120,46 @@ public class PublicClass {
             }
         }
     }
+    /**
+     * 设置标题栏颜色---更改主题时使用
+     * views[0]  ---> TitleLayout   大的LineaLayout
+     * views[1]  ---> TabLayout
+     * views[2]  ---> TitleTV     头部标题
+     * views[3]  ---> layoutBg//整体布局的背景
+     * */
+    public static void setThemeTopLayout(Context context,View... views){
+        try {
+            int key= SharedPreferencesUtils.getInt(context,"THEME");
+            setTranslucentStatus((Activity) context);
+            if(views[0]!=null)
+                views[0].setBackgroundResource(getColor(context));
+            if(views[1]!=null) {//TabLayout
+                TabLayout tabLayouts= (TabLayout) views[1];
+                if(key==27) {//夜间模式
+                    tabLayouts.setTabTextColors(context.getResources().getColor(R.color.theme1),context.getResources().getColor(R.color.white));
+                }
+                else { //非夜间模式
+                    tabLayouts.setTabTextColors(context.getResources().getColor(R.color.drak444),context.getResources().getColor(R.color.white));
+                }
+                tabLayouts.setBackgroundResource(getColor(context));
+            }
+            if(views[2]!=null) {
+                if(key==27)
+                    ((TextView) views[2]).setTextColor(context.getResources().getColor(R.color.white));
+            /*else
+                ((TextView) views[2]).setTextColor(R.color.white);*/
+            }
+            if(views[3]!=null&&key==27)//背景颜色
+                views[3].setBackgroundResource(getColor(context));
+            else
+                views[3].setBackgroundResource(R.color.white);
+            if(views[4]!=null)
+                views[4].setBackgroundResource(getColor(context));
+        }catch (ArrayIndexOutOfBoundsException e){}
+
+    }
+
+
 
     /**
      * 系统默认颜色

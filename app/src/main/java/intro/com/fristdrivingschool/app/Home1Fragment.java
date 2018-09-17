@@ -23,6 +23,7 @@ import intro.com.fristdrivingschool.Custom.CustomDialog;
 import intro.com.fristdrivingschool.R;
 import intro.com.fristdrivingschool.adapter.FlowLayoutTagAdapter;
 import intro.com.fristdrivingschool.adapter.GridViewAdapter;
+import intro.com.fristdrivingschool.tool.ActivityUntil;
 import intro.com.fristdrivingschool.tool.BaseFragment;
 import intro.com.fristdrivingschool.tool.CustomToast;
 import intro.com.fristdrivingschool.tool.PublicClass;
@@ -87,6 +88,8 @@ public class Home1Fragment extends BaseFragment {
         holder.home1LayoutTeacherPhoneIcon.setOnClickListener(this);
         holder.home1LayoutDrivingSchool.setOnClickListener(this);
         holder.home1LayoutAppointmentTime.setOnClickListener(this);
+        holder.home1LayoutTeacherIcon.setOnClickListener(this);
+
     }
 
     @Override
@@ -118,6 +121,10 @@ public class Home1Fragment extends BaseFragment {
                     }
                 });
                 customDialog.show();
+                break;
+
+            case R.id.home1_layout_teacherIcon://教练详情页
+                ActivityUntil.next(context,TeacherDetaisActivity.class,null);
                 break;
 
         }

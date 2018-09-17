@@ -1,15 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_teacher_detais"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context="intro.com.fristdrivingschool.app.TeacherDetaisActivity">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="jiaoL页面"
-        />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-</RelativeLayout>
+        <!--  头   -->
+        <LinearLayout
+            android:id="@+id/tag_list_top_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/theme1"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/teacher_details_title"
+                style="@style/style_top_title_back"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="教练详情" />
+
+            <ImageView
+                android:id="@+id/teacher_details_message"
+                style="@style/style_message" />
+        </LinearLayout>
+
+        <!--   驾校教练信息  -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/shape_5dip_white_theme2"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/teacher_details_Icon"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:adjustViewBounds="true"
+                android:onClick="onClick"
+                android:src="@mipmap/icon_head" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <!-- 教练名   -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        style="@style/style_content_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="教练名：" />
+
+                    <TextView
+                        android:id="@+id/teacher_details_Name"
+                        style="@style/style_content"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Tom"
+                        android:textColor="@color/color2" />
+                </LinearLayout>
+
+                <!-- 教练联系电话   -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        style="@style/style_content_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="联系电话：" />
+
+                    <TextView
+                        android:id="@+id/teacher_details_Phone"
+                        style="@style/style_content"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="157********" />
+                </LinearLayout>
+                <!-- 教练位置   -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        style="@style/style_content_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="教练位置：" />
+
+                    <TextView
+                        android:id="@+id/teacher_details_Location"
+                        style="@style/style_content"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="157********" />
+                </LinearLayout>
+
+                <!-- 所在驾校   -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        style="@style/style_content_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="所属驾校：" />
+
+                    <TextView
+                        android:id="@+id/teacher_details_BelongTo"
+                        style="@style/style_content"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="知心驾校" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/line" />
+
+            <ImageView
+                android:id="@+id/teacher_details_PhoneIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:src="@mipmap/icon_phone" />
+        </LinearLayout>
+
+        <!--   教练照片  -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/teacher_details_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="190dp"
+                android:orientation="horizontal" />
+        </HorizontalScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            >
+            <View
+                android:layout_width="5dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:background="@color/theme1" />
+            <TextView
+                style="@style/style_content_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="学员评价：" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</ScrollView>

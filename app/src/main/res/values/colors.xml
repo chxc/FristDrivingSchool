@@ -4,6 +4,10 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
+    <color name="transparency">#0000</color>
+    <color name="halfTransparency">#96000000</color><!--  半透明   -->
+
+
     <color name="drak333">#333</color>
     <color name="drak444">#444</color>
     <color name="drak666">#666</color>
@@ -16,9 +20,8 @@
     <color name="black">#000000</color>
     <color name="btuTheme">#D0D0D0</color>
 
+    <!--<color name="theme1">#FF3030</color>-->
     <color name="theme1">#6c7</color>
-
-
 
     <color name="color1">#6c7</color>
     <color name="color2">#FE8A23</color>

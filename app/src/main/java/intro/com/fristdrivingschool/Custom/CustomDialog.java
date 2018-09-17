@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.view.Display;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
@@ -37,6 +38,8 @@ public class CustomDialog extends AlertDialog {
         this.setContentView(R.layout.dialog_custom_layout);
 
         WindowManager m = getWindow().getWindowManager();
+        Window window=getWindow();
+        window.setWindowAnimations(R.style.dialog_anim_style);
         Display d = m.getDefaultDisplay();  //为获取屏幕宽、高
         android.view.WindowManager.LayoutParams p = getWindow().getAttributes();  //获取对话框当前的参数值
         p.width = (int) (d.getWidth() * 0.6);    //宽度设置为屏幕的0.5
