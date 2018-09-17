@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    >
+
+    <ImageView
+        android:id="@+id/message_board_item_icon"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@mipmap/icon_head"
+        />
+
+    <!--    用户名   留言内容   -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="10dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <!--   用户名    -->
+            <TextView
+                android:id="@+id/message_board_item_name"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:singleLine="true"
+                android:layout_height="wrap_content"
+                android:text="学员A"
+                android:lines="1"
+                style="@style/style_content"
+                />
+
+            <TextView
+                android:id="@+id/message_board_item_praise"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20"
+                android:textColor="@drawable/selector_font_praise"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                style="@style/style_content"
+                android:onClick="onClick"
+                android:drawableRight="@drawable/selector_praise"
+                android:drawablePadding="5dp"
+                />
+        </LinearLayout>
+
+        <!--   留言内容   -->
+        <TextView
+            android:id="@+id/message_board_item_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/style_content_name"
+            android:text="教练不错"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            >
+            <!--   时间  -->
+            <TextView
+                android:id="@+id/message_board_item_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2018-08-11  23：57"
+                style="@style/style_content"
+                android:textSize="12sp"
+                />
+
+            <TextView
+                android:id="@+id/message_board_item_reply"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/style_content_name"
+                android:text="回复Ta"
+                android:padding="10dp"
+                android:textSize="13sp"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

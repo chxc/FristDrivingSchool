@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <!--  个人中心   -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="@color/theme1"
+        android:orientation="vertical"
+        >
+        <!--  头像 、通知  -->
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icon_head"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            />
+
+        <!--   用户名   -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/style_title_TV"
+            android:text="hello"
+            />
+    </LinearLayout>
+
+    <!--   -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/line"
+        >
+        <!--  预约历史   -->
+        <TextView
+            android:id="@+id/home5_layout_appointment_history"
+            android:text="预约历史"
+            android:drawableLeft="@mipmap/icon_history"
+            style="@style/style_personImfo"
+            />
+
+        <TextView
+            android:text="反馈"
+            android:drawableLeft="@mipmap/icon_feedback"
+            style="@style/style_personImfo"
+            />
+        <TextView
+            android:text="关于我们"
+            android:drawableLeft="@mipmap/icon_about"
+            style="@style/style_personImfo"
+            />
+        <TextView
+            android:text="主题设置"
+            android:drawableLeft="@mipmap/icon_theme_setting"
+            style="@style/style_personImfo"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            />
+    </LinearLayout>
+</LinearLayout>

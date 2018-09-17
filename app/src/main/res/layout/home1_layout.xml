@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <!--   头    -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color1"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@drawable/corner_color2_5dp"
+                android:drawableLeft="@drawable/icon_location"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
+                android:paddingBottom="2dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="8dp"
+                android:paddingTop="2dp"
+                android:text="合肥" />
+
+            <TextView
+                android:id="@+id/home1_layout_drivingSchool"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:text="知心驾校"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/line" />
+
+        <!--   驾校教练信息  -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/shape_5dip_white_theme2"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/home1_layout_teacherIcon"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:adjustViewBounds="true"
+                android:src="@mipmap/icon_head" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <!-- 教练名   -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        style="@style/style_content_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="教练名：" />
+
+                    <TextView
+                        android:id="@+id/home1_layout_teacherName"
+                        style="@style/style_content"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Tom"
+                        android:textColor="@color/color2" />
+                </LinearLayout>
+
+                <!-- 教练联系电话   -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        style="@style/style_content_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="联系电话：" />
+
+                    <TextView
+                        android:id="@+id/home1_layout_teacherPhone"
+                        style="@style/style_content"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="157********" />
+                </LinearLayout>
+                <!-- 教练位置   -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        style="@style/style_content_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="教练位置：" />
+
+                    <TextView
+                        android:id="@+id/home1_layout_teacherLocation"
+                        style="@style/style_content"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="157********" />
+                </LinearLayout>
+
+                <!-- 所在驾校   -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        style="@style/style_content_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="所属驾校：" />
+
+                    <TextView
+                        android:id="@+id/home1_layout_teacherBelongTo"
+                        style="@style/style_content"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="知心驾校" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/line" />
+
+            <ImageView
+                android:id="@+id/home1_layout_teacherPhoneIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:src="@mipmap/icon_phone" />
+        </LinearLayout>
+
+        <!--   科目名   -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+
+            >
+
+            <TextView
+                style="@style/style_content_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="科目名：" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="科目二"
+                android:textColor="@color/color1"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <!--   课程详情    -->
+        <GridView
+            android:id="@+id/home1_layout_class_gridview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:horizontalSpacing="10dp"
+            android:numColumns="3"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="5dp" />
+
+        <!--  预约状态  -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                style="@style/style_content_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:text="预约状态" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/home1_layout_appointmentTime"
+                    style="@style/style_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:singleLine="false"
+                    android:text="已预约时间点：\n12：00-12：40\n12：00-12：40" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/corner_color2_5dp"
+                    android:padding="5dp"
+                    android:text="可预约1个点" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!--  科目信息  -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                style="@style/style_content_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:text="科目介绍" />
+
+            <TextView
+                style="@style/style_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:singleLine="false"
+                android:text="科目二，又称小路考，是机动车驾驶证考核的一部分，是场地驾驶技能考试科目的简称，小车C1C2考试项目包括倒车入库、侧方停车、坡道定点停车和起步、直角转弯、曲线行驶（俗称S弯）五项必考（部分地区还有第六项高速领卡）。" />
+        </LinearLayout>
+
+        <!--  练习技巧  -->
+
+        <!--   教练标签    -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/style_content_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="教练标签" />
+
+            <com.zhy.view.flowlayout.TagFlowLayout
+                android:id="@+id/home1_layout_teacherTag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+</ScrollView>

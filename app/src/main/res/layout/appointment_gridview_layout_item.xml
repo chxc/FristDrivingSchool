@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/appointment_gridview_item"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:background="@drawable/selector_enable_corner"
+    >
+
+      <!--   时间  -->
+    <TextView
+        android:id="@+id/appointment_gridview_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="12:00-12:40"
+        android:textColor="@color/drak333"
+        />
+    <TextView
+        android:id="@+id/appointment_gridview_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3人/4人"
+        android:textColor="@color/drak333"
+        />
+
+</LinearLayout>

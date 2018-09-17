@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/touming"
+    android:padding="10dp"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/shape_circular_white_soild"
+        >
+        <TextView
+            android:id="@+id/dialog_custom_layout_tip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="弹窗提示弹窗提示弹窗提示弹窗提示弹窗提示弹窗提示弹窗提示弹窗提示"
+            style="@style/style_content"
+            android:padding="15dp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            >
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                />
+            <TextView
+                android:id="@+id/dialog_custom_layout_ensure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="确定"
+                style="@style/padding10_5"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:background="@drawable/selector_enable_corner"
+                />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                />
+            <TextView
+                android:id="@+id/dialog_custom_layout_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="取消"
+                style="@style/padding10_5"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:background="@drawable/shape_corner_cancle"
+                />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

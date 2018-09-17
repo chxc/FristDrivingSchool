@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_pressed="false" android:drawable="@drawable/shape_corner_theme1_5dp"></item>
+    <item android:state_pressed="true" android:drawable="@drawable/shape_corner_theme2_5dp"></item>
+
+</selector>
