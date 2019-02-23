@@ -12,6 +12,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import intro.com.fristdrivingschool.Bean.Home1Bean;
 import intro.com.fristdrivingschool.Custom.CustomDialog;
 import intro.com.fristdrivingschool.R;
 import intro.com.fristdrivingschool.tool.CustomToast;
@@ -23,10 +24,10 @@ import intro.com.fristdrivingschool.tool.YCStringTool;
 
 public class GridViewAdapter extends PublicAdapter {
     private Context context;
-    private List list;
+    private List<Home1Bean.DataBean.TodayBean.AppointmentBean> list;
     private CustomDialog customDialog;
 
-    public GridViewAdapter(List list, Context context) {
+    public GridViewAdapter(List<Home1Bean.DataBean.TodayBean.AppointmentBean> list, Context context) {
         super(list);
         this.context = context;
         this.list = list;
@@ -36,9 +37,11 @@ public class GridViewAdapter extends PublicAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         convertView = LayoutInflater.from(context).inflate(R.layout.appointment_gridview_layout_item, parent, false);
         MyViewHolder holder=new MyViewHolder(convertView);
-        if(position%2==0){
-            holder.appointmentGridviewItem.setEnabled(false);
+        if(list.get(position).getHasNum()>list.get(position).getNotNum()){
+            holder.appointmentGridviewItem.setEnabled(true);
         }
+        holder.appointmentGridviewTime.setText(list.get(position).getTime());
+        holder.appointmentGridviewNum.setText(list.get(position).getNotNum()+"/"+list.get(position).getHasNum());
         holder.appointmentGridviewItem.setOnClickListener(new MyListener(position,2));
         return convertView;
     }
@@ -65,7 +68,7 @@ public class GridViewAdapter extends PublicAdapter {
                     break;
 
                 case 2://item点击
-                    YCStringTool.logi("点击"+position);
+                    YCStringTool.logi(this.getClass(),"点击"+position);
                     customDialog=new CustomDialog(context);
                     customDialog.setOnEnsureListener(new MyListener(position,0));
                     customDialog.setOnCancelListener(new MyListener(position,1));

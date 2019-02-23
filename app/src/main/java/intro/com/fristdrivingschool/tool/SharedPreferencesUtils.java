@@ -15,15 +15,10 @@ import android.content.SharedPreferences.Editor;
 public class SharedPreferencesUtils {
     private final static String APP_SING="ZSSING";//标签
 
-    public final static String SEARCH_NUM="search_num";//搜索下标
-    public final static String SEARCH_CONTEN="search_content";//搜索保存的前缀
-    public final static String HOME_DATA_new="home_data_news";//首页最新数据
-    public final static String HOME_BANNER="home_banner";//首页Banner
-    public final static String HOME_DATA_quality="home_data_quality";//首页最新数据
-    public final static String FIRST_INIT="first_init";//第一次启动
-
-    public final static String HIDEBAR="pref_actionbar_switch";//隐藏操作栏
-    public final static String LOCKLANDSCAPE="lockLandscapeValue";//锁定横屏
+    public final static String USERID="userId";//用户ID
+    public final static String loginRememberValue="loginRememberValue";//登陆页面自动登陆
+    public final static String userNameValue="userNameValue";//登陆页面自动登陆
+    public final static String userPasswordValue="userPasswordValue";//登陆页面自动登陆
 
     public static void savaString(Context context, String key, String value) {
         SharedPreferences preferences = context.getSharedPreferences(APP_SING,

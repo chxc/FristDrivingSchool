@@ -13,15 +13,18 @@
         >
         <!--  头像 、通知  -->
         <ImageView
+            android:id="@+id/home5_headIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@mipmap/icon_head"
             android:layout_margin="10dp"
             android:layout_gravity="center"
+            android:onClick="onClick"
             />
 
         <!--   用户名   -->
         <TextView
+            android:id="@+id/home5_headName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/style_title_TV"

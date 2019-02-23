@@ -7,6 +7,7 @@ import android.view.View;
 
 import intro.com.fristdrivingschool.Custom.SwipeBackActivity;
 import intro.com.fristdrivingschool.R;
+import intro.com.fristdrivingschool.tool.Net.MyNetListener;
 import intro.com.fristdrivingschool.tool.PublicClass;
 import intro.com.fristdrivingschool.tool.SharedPreferencesUtils;
 
@@ -15,7 +16,7 @@ import intro.com.fristdrivingschool.tool.SharedPreferencesUtils;
  * Created by HFZS on 2018/8/21.
  */
 
-public abstract class BaseActivity extends SwipeBackActivity implements View.OnClickListener,BaseFuncIml {
+public abstract class BaseActivity extends SwipeBackActivity implements View.OnClickListener,BaseFuncIml,MyNetListener.NetListener {
 
     public Activity activity;
 
@@ -30,7 +31,6 @@ public abstract class BaseActivity extends SwipeBackActivity implements View.OnC
         if(key==100)
             setTheme(R.style.TruanceDayNightTheme);
         else setTheme(R.style.TruanceTheme);
-
     }
 
     @Override
@@ -51,7 +51,6 @@ public abstract class BaseActivity extends SwipeBackActivity implements View.OnC
         initView();
         initTab();
         initListener();
-        getData();
         PublicClass.setTranslucentStatus(activity);
     }
 

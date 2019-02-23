@@ -4,25 +4,26 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
-    <color name="transparency">#0000</color>
-    <color name="halfTransparency">#96000000</color><!--  半透明   -->
-
-
-    <color name="drak333">#333</color>
     <color name="drak444">#444</color>
+    <color name="drak333">#333</color>
+    <!--<color name="drak444">#444</color>-->
     <color name="drak666">#666</color>
     <color name="drak999">#999</color>
-    <color name="touming">#0000</color>
+    <color name="transparency">#0000</color>
+    <color name="halfTransparency">#96000000</color><!--  半透明   -->
     <color name="bg">#EFEFF2</color>
     <color name="bg1">#F4F4F4</color>
     <color name="line">#CECECE</color>
+
+    <color name="wideLine">#76cccccc</color>
+    <color name="touming">#0000</color>
+
+    <color name="openService">#47a83a</color>
     <color name="white">#FFFFFF</color>
+    <color name="half_white">#66ffffff</color><!--   注意，当背景色白色时实际就是白色，当为其他颜色，则会宣示半透明   -->
     <color name="black">#000000</color>
     <color name="btuTheme">#D0D0D0</color>
-
-    <!--<color name="theme1">#FF3030</color>-->
-    <color name="theme1">#6c7</color>
-
+    <!--<color name="theme1">#6c7</color>-->
     <color name="color1">#6c7</color>
     <color name="color2">#FE8A23</color>
     <color name="color3">#33B5E5</color>
@@ -50,4 +51,50 @@
     <color name="color25">#845856</color>
     <color name="color26">#FF3030</color>
     <color name="color27">#587581</color>
+
+    <color name="theme1_f">#9633b5e5</color>
+    <color name="theme1">#6c7</color>
+    <color name="theme2">#FE8A23</color>
+    <color name="theme2_f">#66FE8A23</color>
+
+    <color name="theme3">#6c7</color>
+    <color name="theme3_f">#96c7</color>
+
+    <color name="theme4">#FF1493</color>
+    <color name="theme4_f">#96FF1493</color>
+
+    <color name="theme5">#008000</color>
+    <color name="theme5_f">#96008000</color>
+
+    <color name="theme6">#008080</color>
+    <color name="theme6_f">#96008080</color>
+
+    <color name="theme7">#33B5E5</color>
+    <color name="theme7_f">#9633B5E5</color>
+
+    <color name="theme8">#808080</color>
+    <color name="theme8_f">#96808080</color>
+
+    <color name="theme9">#9932CC</color>
+    <color name="theme10">#87CEEB</color>
+    <color name="theme11">#3CB371</color>
+    <color name="theme12">#808000</color>
+    <color name="theme13">#800080</color>
+    <color name="theme14">#FFD700</color>
+
+    <color name="theme15">#FFA500</color>
+    <color name="theme16">#C71585</color>
+    <color name="theme17">#CD5C5C</color>
+    <color name="theme18">#FFDEAD</color>
+    <color name="theme19">#FFA07A</color>
+    <color name="theme20">#B22222</color>
+    <color name="theme21">#b981f2</color>
+    <color name="theme22">#68228B</color>
+    <color name="theme23">#4876FF</color>
+    <color name="theme24">#E736E2</color>
+    <color name="theme25">#845856</color>
+    <color name="theme26">#FF3030</color>
+    <color name="theme27">#587581</color>
+
+
 </resources>

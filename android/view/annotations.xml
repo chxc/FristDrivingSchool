@@ -1,0 +1,6 @@
+<root>
+    <item
+        name='android.view.View void setOnScrollChangeListener(android.view.View.OnScrollChangeListener)'>
+        <annotation name='java.lang.Deprecated' />
+    </item>
+</root>

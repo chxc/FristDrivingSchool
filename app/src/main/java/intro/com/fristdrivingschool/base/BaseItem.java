@@ -11,12 +11,7 @@ public abstract class BaseItem {
         this.context = context;
         this.view = view;
         initView(context,view);
-        // getData(context,view);
-        //try {
-            initEvent(context,view);
-        /*} catch (Exception e) {
-            e.printStackTrace();
-        }*/
+        initEvent(context,view);
     }
 
     public abstract void initView(Context context,View view);//初始化视图

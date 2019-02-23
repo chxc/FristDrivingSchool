@@ -6,86 +6,97 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.zhy.view.flowlayout.TagFlowLayout;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
+import intro.com.fristdrivingschool.Bean.Home1Bean;
 import intro.com.fristdrivingschool.Custom.CustomDialog;
+import intro.com.fristdrivingschool.Custom.CustomGridView;
 import intro.com.fristdrivingschool.R;
 import intro.com.fristdrivingschool.adapter.FlowLayoutTagAdapter;
 import intro.com.fristdrivingschool.adapter.GridViewAdapter;
-import intro.com.fristdrivingschool.tool.ActivityUntil;
 import intro.com.fristdrivingschool.tool.BaseFragment;
 import intro.com.fristdrivingschool.tool.CustomToast;
+import intro.com.fristdrivingschool.tool.Net.MyNetListener;
 import intro.com.fristdrivingschool.tool.PublicClass;
+import intro.com.fristdrivingschool.tool.SharedPreferencesUtils;
+import intro.com.fristdrivingschool.tool.StaticValue;
+import intro.com.fristdrivingschool.tool.YCStringTool;
 
 /**
  * Created by HFZS on 2018/7/5.
  */
 
-public class Home1Fragment extends BaseFragment {
+public class Home1Fragment extends BaseFragment implements MyNetListener.NetListener {
+
+    Unbinder unbinder;
     private View view;
     private ViewHolder holder;
     private Activity context;
+    private Home1Bean home1Bean;
+    private List<Home1Bean.DataBean.TodayBean.AppointmentBean> todatList;
+    private GridViewAdapter gridViewAdapter;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.home1_layout, container, false);
         holder = new ViewHolder(view);
-        context=getActivity();
-        initEvent();
-        getData();
-        initView();
+        context = getActivity();
+        unbinder = ButterKnife.bind(this, view);
         return view;
+    }
+
+    @Override
+    protected void initData() {
+        SharedPreferencesUtils.savaString(context,SharedPreferencesUtils.USERID,"1");
+        getData(1);
     }
 
     @Override
     public void initView() {
         //预约时间点
-        List<String> list=new ArrayList<>();
-        list.add("");
-        list.add("");
-        list.add("");
-        list.add("");
-        list.add("");
-        list.add("");
-        list.add("");
-        list.add("");
-        list.add("");
-        list.add("");
-        GridViewAdapter  gridViewAdapter=new GridViewAdapter(list,context);
+        todatList = new ArrayList<>();
+        gridViewAdapter = new GridViewAdapter(todatList, context);
         holder.home1LayoutClassGridview.setAdapter(gridViewAdapter);
-        reMesureGridViewHeight(holder.home1LayoutClassGridview);
-
         //标签
-        List<String> list1=new ArrayList<>();
+        List<String> list1 = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            list1.add("标签"+i);
+            list1.add("标签" + i);
         }
-        FlowLayoutTagAdapter flowLayoutTagAdapter=new FlowLayoutTagAdapter(context,list1);
+        FlowLayoutTagAdapter flowLayoutTagAdapter = new FlowLayoutTagAdapter(context, list1);
         holder.home1LayoutTeacherTag.setAdapter(flowLayoutTagAdapter);
-
-
     }
 
     @Override
-    public void getData() {
-
-
+    public void getData(int... mark) {
+        switch (mark[0]){
+            case 1://获取首页数据
+                Map<String, String> loginMap = new HashMap<>();
+                loginMap.put("user_id", StaticValue.getUseId(context));
+                MyNetListener.getString(context,Request.Method.POST,this,
+                        StaticValue.home1,mark[0],loginMap);
+                break;
+        }
     }
 
     @Override
     public void initEvent() {
         holder.home1LayoutTeacherPhoneIcon.setOnClickListener(this);
+        holder.home1LayoutTeacherBelongTo.setOnClickListener(this);
         holder.home1LayoutDrivingSchool.setOnClickListener(this);
         holder.home1LayoutAppointmentTime.setOnClickListener(this);
         holder.home1LayoutTeacherIcon.setOnClickListener(this);
@@ -94,40 +105,71 @@ public class Home1Fragment extends BaseFragment {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.home1_layout_teacherPhoneIcon://教练电话
-                PublicClass.diallPhone(context,"13969531234");
+                PublicClass.diallPhone(context, "13969531234");
                 break;
 
             case R.id.home1_layout_drivingSchool://驾校
+                PublicClass.openAppForPackageName(context,"com.rtk.app");
                 context.finish();
                 break;
 
             case R.id.home1_layout_appointmentTime://已预约的时间
-                final CustomDialog customDialog=new CustomDialog(context,R.style.CustomDialog);
+                final CustomDialog customDialog = new CustomDialog(context, R.style.CustomDialog);
                 customDialog.setMsg("您要取消预约吗？");
                 customDialog.setOnCancelListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        CustomToast.showToast(context,"取消",2000);
+                        CustomToast.showToast(context, "取消", 2000);
                         customDialog.dismiss();
                     }
                 });
                 customDialog.setOnEnsureListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        CustomToast.showToast(context,"确定",2000);
+                        CustomToast.showToast(context, "确定", 2000);
                         customDialog.dismiss();
                     }
                 });
                 customDialog.show();
                 break;
-
             case R.id.home1_layout_teacherIcon://教练详情页
-                ActivityUntil.next(context,TeacherDetaisActivity.class,null);
+                PublicClass.goToTeacherDetaisActivity(context,home1Bean.getData().getCoachdata().getCoach_id()+"");
                 break;
-
+            case R.id.home1_layout_teacherBelongTo://驾校详情
+                PublicClass.goToSchoolDetailsActivity(context,home1Bean.getData().getCoachdata().getSchool_id()+"",
+                        home1Bean.getData().getCoachdata().getSchool());
+                break;
         }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
+    }
+
+    @Override
+    public void success(String str, int mark, int... position) {
+        switch (mark){
+            case 1://首页数据
+                YCStringTool.logi(this.getClass(),"首页数据"+str);
+                Gson gson=new GsonBuilder().enableComplexMapKeySerialization().create();
+                home1Bean = gson.fromJson(str, Home1Bean.class);
+                todatList.addAll(home1Bean.getData().getToday().getAppointment());
+                holder.home1LayoutTeacherName.setText(home1Bean.getData().getCoachdata().getName());//教练名;
+                holder.home1LayoutTeacherPhone.setText(home1Bean.getData().getCoachdata().getConnect());//教练电话
+                holder.home1LayoutTeacherLocation.setText(home1Bean.getData().getCoachdata().getConnect());//教练电话
+                holder.home1LayoutTeacherLocation.setText(home1Bean.getData().getCoachdata().getConnect());//教练电话
+                holder.home1LayoutDrivingSchool.setText(home1Bean.getData().getCoachdata().getSchool());//驾校名
+                gridViewAdapter.notifyDataSetChanged();
+                break;
+        }
+    }
+
+    @Override
+    public void error(String str, int mark, int... position) {
     }
 
     class ViewHolder {
@@ -148,58 +190,11 @@ public class Home1Fragment extends BaseFragment {
         @BindView(R.id.home1_layout_appointmentTime)
         TextView home1LayoutAppointmentTime;
         @BindView(R.id.home1_layout_class_gridview)
-        GridView home1LayoutClassGridview;
+        CustomGridView home1LayoutClassGridview;
         @BindView(R.id.home1_layout_teacherTag)
         TagFlowLayout home1LayoutTeacherTag;
-
         ViewHolder(View view) {
             ButterKnife.bind(this, view);
         }
     }
-    /**
-     * 设置GridView高度
-     * */
-    public void reMesureGridViewHeight(GridView gridView) {
-        // 获取GridView对应的Adapter
-        ListAdapter listAdapter = gridView.getAdapter();
-        if (listAdapter == null) {
-            return;
-        }
-        int rows;
-        int columns = 0;
-        int horizontalBorderHeight = 0;
-        Class<?> clazz = gridView.getClass();
-        try {
-            // 利用反射，取得每行显示的个数
-            Field column = clazz.getDeclaredField("mRequestedNumColumns");
-            column.setAccessible(true);
-            columns = (Integer) column.get(gridView);
-            //          columns = gridView.getNumColumns();//Call requires API level 11
-
-            // 利用反射，取得横向分割线高度
-            Field horizontalSpacing = clazz.getDeclaredField("mRequestedHorizontalSpacing");
-            horizontalSpacing.setAccessible(true);
-            horizontalBorderHeight = (Integer) horizontalSpacing.get(gridView);
-
-            //          horizontalBorderHeight = gridView.getHorizontalSpacing();//Call requires API level 16
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        // 判断数据总数除以每行个数是否整除。不能整除代表有多余，需要加一行
-        if (listAdapter.getCount() % columns > 0) {
-            rows = listAdapter.getCount() / columns + 1;
-        } else {
-            rows = listAdapter.getCount() / columns;
-        }
-        int totalHeight = 0;
-        for (int i = 0; i < rows; i++) { // 只计算每项高度*行数
-            View listItem = listAdapter.getView(i, null, gridView);
-            listItem.measure(0, 0); // 计算子项View 的宽高
-            totalHeight += listItem.getMeasuredHeight(); // 统计所有子项的总高度
-        }
-        ViewGroup.LayoutParams params = gridView.getLayoutParams();
-        params.height = totalHeight + horizontalBorderHeight * (rows - 1);// 最后加上分割线总高度
-        gridView.setLayoutParams(params);
-    }
-
 }

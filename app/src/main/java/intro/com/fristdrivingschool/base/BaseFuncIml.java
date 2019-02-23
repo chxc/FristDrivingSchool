@@ -4,7 +4,7 @@ package intro.com.fristdrivingschool.base;
  * Created by HFZS on 2018/8/21.
  */
 
-public interface BaseFuncIml {
+public interface BaseFuncIml{
     /* 初始化数据方法 */
     void initData();
 
@@ -15,6 +15,6 @@ public interface BaseFuncIml {
     void initListener();
 
     /* 初始化界面加载方法 */
-    void getData();
+    void getData(int... mark);
 
 }

@@ -10,6 +10,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.util.Log;
 import android.view.View;
@@ -21,7 +22,13 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
+import java.lang.ref.WeakReference;
+
 import intro.com.fristdrivingschool.R;
+import intro.com.fristdrivingschool.app.SchoolDetailsActivity;
+import intro.com.fristdrivingschool.app.TeacherDetaisActivity;
 
 /**
  * Created by HFZS on 2018/3/21.
@@ -235,4 +242,42 @@ public class PublicClass {
         context.startActivity(intent);
     }
 
+    /**
+     * 根据app包名打开指定app
+     */
+    public static void openAppForPackageName(Context context, String packageName) {
+        final PackageManager pm = context.getPackageManager();
+        Intent intent = pm.getLaunchIntentForPackage(packageName);
+        context.getApplicationContext().startActivity(intent);
+    }
+
+    /**跳转教练详情页面*/
+    public static void goToTeacherDetaisActivity(Activity context, String coach_id ){
+        Bundle bundle=new Bundle();
+        bundle.putString("coach_id",coach_id);
+        ActivityUntil.next(context, TeacherDetaisActivity.class, bundle);
+    }
+
+    /**加载网络文件*/
+    public static void putImage(Context context,String url,ImageView img){
+        try {
+            final WeakReference<ImageView> imageViewWeakReference = new WeakReference<>(img);
+            ImageView target = imageViewWeakReference.get();
+            if (target != null) {
+                Glide.with(context).load(url)
+                        .placeholder(R.mipmap.ic_launcher)
+                        .error(R.mipmap.ic_launcher).into(target);
+            }
+        } catch (Exception e) {
+            YCStringTool.logi(PublicClass.class,"错误" + e);
+        }
+    }
+
+    /**跳转驾校详情*/
+    public static void goToSchoolDetailsActivity(Activity context, String schoolId,String schoolName) {
+        Bundle bundle=new Bundle();
+        bundle.putString("schoolId",schoolId);
+        bundle.putString("schoolName",schoolName);
+        ActivityUntil.next(context,SchoolDetailsActivity.class,bundle);
+    }
 }

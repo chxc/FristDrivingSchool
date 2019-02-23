@@ -28,12 +28,17 @@ public class Home2Fragment extends BaseFragment {
     }
 
     @Override
+    protected void initData() {
+
+    }
+
+    @Override
     protected void initView() {
 
     }
 
     @Override
-    protected void getData() {
+    protected void getData(int... mark) {
 
     }
 

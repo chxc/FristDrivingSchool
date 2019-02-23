@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    tools:context="intro.com.fristdrivingschool.app.Home5.LoginActivity">
+
+    <LinearLayout
+        android:id="@+id/login_top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/style_top_layout"
+        >
+
+        <TextView
+            android:id="@+id/login_closed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="登陆"
+            style="@style/style_top_title_back"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="40dip">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dip"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/icon_ic_user" />
+
+            <EditText
+                android:id="@+id/login_username"
+                android:layout_width="wrap_content"
+                android:layout_height="45dip"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="用户名/手机号/邮箱"
+                android:paddingLeft="5dip"
+                android:singleLine="true"
+                android:textColor="@color/drak333"
+                android:textColorHint="@color/drak666"
+                android:textSize="14dip"
+                android:inputType="phone"
+                />
+
+            <ImageView
+                android:id="@+id/login_username_clear"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingLeft="5dip"
+                android:paddingRight="5dip"
+                android:src="@mipmap/icon_input_close"
+                android:onClick="onClick"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="@color/line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/icon_ic_password" />
+
+            <EditText
+                android:id="@+id/login_pwd"
+                android:layout_width="wrap_content"
+                android:layout_height="45dip"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="输入密码"
+                android:inputType="textPassword"
+                android:paddingLeft="5dip"
+                android:singleLine="true"
+                android:textColor="@color/drak333"
+                android:textColorHint="@color/drak666"
+                android:textSize="14dip" />
+
+            <ImageView
+                android:id="@+id/login_pwd_clear"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingLeft="5dip"
+                android:paddingRight="5dip"
+                android:src="@mipmap/icon_input_close"
+                android:onClick="onClick"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="@color/line" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dip"
+            android:gravity="left|center_vertical"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/login_remember"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingRight="7dip"
+                android:onClick="onClick"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="自动登录"
+                android:textColor="@color/drak666"
+                android:textSize="14dip" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/login_loginBtu"
+            android:layout_width="match_parent"
+            android:layout_height="45dip"
+            android:background="@color/halfTransparency"
+            android:gravity="center"
+            android:text="立即登录"
+            android:textColor="@color/white"
+            android:textSize="18dip"
+            android:onClick="onClick"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dip"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/login_forget"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:paddingLeft="7dip"
+                android:text="忘记密码？"
+                android:textColor="@color/drak666"
+                android:onClick="onClick"
+                android:textSize="15dip" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/login_register"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:paddingLeft="7dip"
+                android:text="新用户注册"
+                android:textColor="@color/theme2"
+                android:onClick="onClick"
+                android:textSize="15dip" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

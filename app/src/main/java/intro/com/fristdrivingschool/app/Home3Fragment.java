@@ -42,6 +42,11 @@ public class Home3Fragment extends BaseFragment {
     }
 
     @Override
+    protected void initData() {
+
+    }
+
+    @Override
     protected void initView() {
         myHolder=new MyHolder(view);
         messageBoardItemAdapter=new MessageBoardItemAdapter(list,context);
@@ -49,7 +54,7 @@ public class Home3Fragment extends BaseFragment {
     }
 
     @Override
-    protected void getData() {
+    protected void getData(int... mark) {
         list.add("");
         list.add("");
         list.add("");

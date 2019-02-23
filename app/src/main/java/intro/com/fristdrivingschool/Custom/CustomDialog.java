@@ -1,8 +1,8 @@
 package intro.com.fristdrivingschool.Custom;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.view.Display;
 import android.view.View;
 import android.view.Window;

@@ -28,11 +28,7 @@ public class YCStringTool {
     }
 
     public static void logi(Class c,String str) {
-        Log.i("TAG123456", c.getName()+str);
-    }
-
-    public static void logi(String str) {
-        Log.i("TAG123456", str);
+        Log.i("TAG123456","11    \n"+c.getName()+"\n -------------->"+ str);
     }
 
     /**

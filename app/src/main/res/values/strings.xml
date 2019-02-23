@@ -24,5 +24,8 @@
     <string name="d">图片描述</string>
     <string name="title_activity_game_home1">GameHome1Activity</string>
 
+    <string name="home1_driving_name">知心驾校</string>
+    <string name="teacherName">Tom</string>
+    <string name="home1_driving_intro">驾校简介驾校简介驾校简介驾校简介驾校简介驾校简介驾校简介驾校简介驾校简介驾校简介驾校简介驾校简介驾校简介驾校简介驾校简介驾校简介</string>
 
 </resources>

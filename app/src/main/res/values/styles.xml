@@ -1,18 +1,10 @@
 <resources>
-
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-    </style>
-
-    <!--   透明主题色  -->
-    <style name="TruanceTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:background">@color/transparency</item>
-        <item name="android:windowBackground">@color/transparency</item>
-        <item name="android:windowIsTranslucent">true</item>
     </style>
 
     <style name="TruanceDayNightTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
@@ -28,7 +20,7 @@
         <item name="android:gravity">center_vertical</item>
         <item name="android:background">@color/theme1</item>
     </style>
-    
+
     <!--  标题样式    -->
     <style name="style_title_TV">
         <item name="android:layout_width">wrap_content</item>
@@ -37,13 +29,6 @@
         <item name="android:textColor">@color/white</item>
         <item name="android:padding">10dp</item>
         <item name="android:layout_gravity">center</item>
-    </style>
-
-    <!--   内容名 样式  -->
-    <style name="style_content_name">
-        <item name="android:textColor">@color/drak333</item>
-        <item name="android:textSize">13dip</item>
-        <item name="android:lines">1</item>
     </style>
 
     <!--  内容样式  -->
@@ -103,13 +88,53 @@
         <item name="android:gravity">center_vertical</item>
     </style>
 
-    <!--  Dialog进入出去样式  -->
-    <style name="dialog_anim_style" parent="android:Animation" >
-        <item name="android:windowEnterAnimation">@anim/dialog_enter_anim</item>
-        <item name="android:windowExitAnimation">@anim/dialog_exit_anim</item>
+    <!--   消息样式   -->
+    <style name="style_message">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:onClick">onClick</item>
+        <item name="android:src">@mipmap/icon_message</item>
+        <item name="android:padding">10dp</item>
     </style>
 
-    <!--   标题返回   -->
+    <!--   透明主题色  -->
+    <style name="TruanceTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:background">@color/transparency</item>
+        <item name="android:windowBackground">@color/transparency</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <!--    btu  小标题    -->
+    <style name="style_title_btu">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <!--   首页尺寸  -->
+    <style name="MyTabLayoutTextAppearance" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="style_top_layout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/theme1</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+    </style>
+
+    <!--   返回按钮样式  -->
+    <style name="style_top_back">
+        <item name="android:onClick">onClick</item>
+        <item name="android:src">@mipmap/icon_back</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingRight">20dp</item>
+    </style>
+
+    <!--   带标题返回    -->
     <style name="style_top_title_back">
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/white</item>
@@ -119,13 +144,71 @@
         <item name="android:gravity">center_vertical</item>
     </style>
 
-    <!--   消息样式   -->
-    <style name="style_message">
+    <!--   反馈按钮  -->
+    <style name="style_top_feedback">
+        <item name="android:onClick">onClick</item>
+        <item name="android:src">@mipmap/icon_feedback</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:onClick">onClick</item>
-        <item name="android:src">@mipmap/icon_message</item>
         <item name="android:padding">10dp</item>
+    </style>
+
+
+    <!--   内容名 样式  -->
+    <style name="style_content_name">
+        <item name="android:textColor">@color/drak333</item>
+        <item name="android:textSize">13dip</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <!--   标签样式    -->
+    <style name="style_tag">
+        <item name="android:textSize">12sp</item>
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:paddingRight">5dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_marginRight">5dp</item>
+    </style>
+
+    <!--   小标题TextView   -->
+    <style name="style_titleTv">
+        <item name="android:textColor">@color/drak333</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:textSize">13dip</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
+    </style>
+
+    <!--  dialog动作样式   -->
+    <style name="dialog_anim_style" parent="android:Theme.NoTitleBar">
+        <item name="android:windowEnterAnimation">@anim/dialog_enter_anim</item>
+        <item name="android:windowExitAnimation">@anim/dialog_exit_anim</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <!--  dialog动作样式2   -->
+    <style name="dialog_anim_style2" parent="android:Theme.NoTitleBar">
+        <item name="android:windowEnterAnimation">@anim/dialog_exit_anim</item>
+        <item name="android:windowExitAnimation">@anim/dialog_enter_anim</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="style_padding_10_5">
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+    </style>
+
+    <!--  二级头像样式   -->
+    <style name="style_icon">
+        <item name="android:layout_width">50dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:src">@mipmap/icon_head</item>
     </style>
 
 </resources>
