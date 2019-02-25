@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context=".app.CommentActivity">
+
+    <LinearLayout
+        android:id="@+id/comment_top_layout"
+        style="@style/style_top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/comment_title_back"
+            style="@style/style_top_title_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="评价输入" />
+    </LinearLayout>
+
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:max="5" />
+
+
+</LinearLayout>

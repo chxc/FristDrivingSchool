@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/coach_item_icon"
+        style="@style/style_icon" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp">
+
+        <TextView
+            android:id="@+id/coach_item_name"
+            style="@style/style_content_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="陈教练"
+            android:drawableTop="@mipmap/star_10"
+            android:gravity="left"
+            />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="已教授学员1000"
+            />
+
+        <TextView
+            android:id="@+id/coach_item_grade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="金牌教练"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

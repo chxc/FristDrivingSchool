@@ -16,7 +16,7 @@
         android:gravity="center_vertical">
 
         <TextView
-            android:id="@+id/teacher_details_title"
+            android:id="@+id/school_details_title"
             style="@style/style_top_title_back"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -24,7 +24,7 @@
             android:text="驾校详情" />
 
         <ImageView
-            android:id="@+id/teacher_details_message"
+            android:id="@+id/school_details_message"
             style="@style/style_message" />
     </LinearLayout>
 
@@ -42,13 +42,12 @@
             <com.youth.banner.Banner
                 android:id="@+id/school_details_banner"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"/>
+                android:layout_height="150dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                >
+                android:gravity="center_vertical">
                 <!--    驾校名    -->
                 <TextView
                     style="@style/style_content_name"
@@ -62,30 +61,36 @@
                 <View
                     android:layout_width="0dp"
                     android:layout_height="1dp"
-                    android:layout_weight="1"
-                    />
+                    android:layout_weight="1" />
+
                 <ImageView
+                    style="@style/style_padding_10_5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/icon_phone_samll"
-                    style="@style/style_padding_10_5"
                     android:onClick="onClick"
-                    />
+                    android:src="@mipmap/icon_phone_samll" />
             </LinearLayout>
+
+            <View style="@style/style_line" />
+
 
             <!--   驾校地址   -->
             <TextView
                 style="@style/style_content_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="驾校地址" />
+                android:text="驾校地址"
+
+                />
+
             <intro.com.fristdrivingschool.Custom.CustomListView
                 android:id="@+id/school_details_location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
-                />
+                android:divider="@null"
+                android:padding="10dp" />
 
+            <View style="@style/style_line" />
             <!--  驾校联系方式    -->
             <TextView
                 style="@style/style_content_name"
@@ -93,33 +98,16 @@
                 android:layout_height="wrap_content"
                 android:text="联系方式" />
 
-            <LinearLayout
+            <intro.com.fristdrivingschool.Custom.CustomListView
+                android:id="@+id/school_details_connect"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/wideLine"
-                android:orientation="vertical"
-                android:layout_margin="10dp"
-                android:padding="5dp"
-                >
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="157**********"
-                    android:textColor="@color/theme2"
-                    />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="77099***@qq.com"
-                    android:textColor="@color/theme2"
-                    />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="0550-6645128"
-                    android:textColor="@color/theme2"
-                    />
-            </LinearLayout>
+                android:divider="@null"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                />
+
+            <View style="@style/style_line" />
 
             <!--  驾校简介    -->
             <TextView
@@ -131,47 +119,24 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
                 android:text="@string/home1_driving_intro"
-                android:textSize="12sp"
-                android:padding="10dp"
-                />
+                android:textSize="12sp" />
 
-            <!--  驾校风貌    -->
-            <TextView
-                style="@style/style_content_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="驾校风貌" />
             <!--   教练列表    -->
             <TextView
+                style="@style/style_content_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="金牌教练"
-                style="@style/style_content_name"
                 android:padding="10dp"
-                />
+                android:text="金牌教练" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp">
-
-                <ImageView style="@style/style_icon" />
-
-                <LinearLayout
+                <intro.com.fristdrivingschool.Custom.CustomListView
+                    android:id="@+id/school_details_coach_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:orientation="vertical"
-                    android:paddingLeft="10dp">
-
-                    <TextView
-                        style="@style/style_content_name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="陈教练" />
-                </LinearLayout>
-            </LinearLayout>
+                    android:divider="@color/wideLine"
+                    />
         </LinearLayout>
     </ScrollView>
 

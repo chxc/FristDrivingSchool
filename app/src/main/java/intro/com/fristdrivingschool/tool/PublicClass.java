@@ -27,6 +27,7 @@ import com.bumptech.glide.Glide;
 import java.lang.ref.WeakReference;
 
 import intro.com.fristdrivingschool.R;
+import intro.com.fristdrivingschool.app.CommentActivity;
 import intro.com.fristdrivingschool.app.SchoolDetailsActivity;
 import intro.com.fristdrivingschool.app.TeacherDetaisActivity;
 
@@ -64,7 +65,13 @@ public class PublicClass {
 
     //下载图片
     public static void Picasso(Context context, String game_logage, ImageView img) {
-
+        try {
+                Glide.with(context).load(game_logage)
+                        .placeholder(R.mipmap.ic_launcher)
+                        .error(R.mipmap.ic_launcher).into(img);
+        } catch (Exception e) {
+            YCStringTool.logi(PublicClass.class,"错误" + e);
+        }
     }
 
     /**
@@ -279,5 +286,13 @@ public class PublicClass {
         bundle.putString("schoolId",schoolId);
         bundle.putString("schoolName",schoolName);
         ActivityUntil.next(context,SchoolDetailsActivity.class,bundle);
+    }
+
+    /**跳转评论输入页面*/
+    public static void goToCommentActivity(Activity context, String schoolId, String coachId) {
+        Bundle bundle=new Bundle();
+        bundle.putString("schoolId",schoolId);
+        bundle.putString("coachId",coachId);
+        ActivityUntil.next(context,CommentActivity.class,bundle);
     }
 }

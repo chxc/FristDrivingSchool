@@ -1,6 +1,7 @@
 package intro.com.fristdrivingschool.app;
 
 import android.app.Activity;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -79,6 +80,7 @@ public class Home1Fragment extends BaseFragment implements MyNetListener.NetList
         }
         FlowLayoutTagAdapter flowLayoutTagAdapter = new FlowLayoutTagAdapter(context, list1);
         holder.home1LayoutTeacherTag.setAdapter(flowLayoutTagAdapter);
+        holder.home1LayoutTeacherBelongTo.getPaint().setFlags(Paint. UNDERLINE_TEXT_FLAG );//设置下划线
     }
 
     @Override
@@ -135,11 +137,11 @@ public class Home1Fragment extends BaseFragment implements MyNetListener.NetList
                 customDialog.show();
                 break;
             case R.id.home1_layout_teacherIcon://教练详情页
-                PublicClass.goToTeacherDetaisActivity(context,home1Bean.getData().getCoachdata().getCoach_id()+"");
+                PublicClass.goToTeacherDetaisActivity(context,"1");
                 break;
             case R.id.home1_layout_teacherBelongTo://驾校详情
-                PublicClass.goToSchoolDetailsActivity(context,home1Bean.getData().getCoachdata().getSchool_id()+"",
-                        home1Bean.getData().getCoachdata().getSchool());
+                PublicClass.goToSchoolDetailsActivity(context,"1",
+                        "某某驾校");
                 break;
         }
     }

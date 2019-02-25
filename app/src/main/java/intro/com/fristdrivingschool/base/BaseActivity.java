@@ -50,6 +50,7 @@ public abstract class BaseActivity extends SwipeBackActivity implements View.OnC
         initData();
         initView();
         initTab();
+        findViewById(android.R.id.content).setBackgroundResource(R.color.white);
         initListener();
         PublicClass.setTranslucentStatus(activity);
     }

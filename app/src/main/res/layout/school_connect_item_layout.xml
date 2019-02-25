@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+    <TextView
+        android:id="@+id/school_connect_item_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/style_tv3"
+        android:padding="5dp"
+        android:text="157********"
+
+        />
+</LinearLayout>

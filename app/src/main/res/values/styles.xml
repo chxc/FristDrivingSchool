@@ -157,7 +157,8 @@
     <!--   内容名 样式  -->
     <style name="style_content_name">
         <item name="android:textColor">@color/drak333</item>
-        <item name="android:textSize">13dip</item>
+        <item name="android:textSize">14dip</item>
+        <item name="android:padding">10dp</item>
         <item name="android:singleLine">true</item>
         <item name="android:ellipsize">end</item>
     </style>
@@ -209,6 +210,34 @@
         <item name="android:layout_width">50dp</item>
         <item name="android:layout_height">50dp</item>
         <item name="android:src">@mipmap/icon_head</item>
+    </style>
+
+    <style name="style_tv1">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/drak333</item>
+    </style>
+    <style name="style_tv2">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/drak333</item>
+    </style>
+    <style name="style_tv3">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/drak666</item>
+    </style>
+    <style name="style_tv4">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/drak666</item>
+    </style>
+    <style name="style_tv5">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/drak666</item>
+    </style>
+    <style name="style_line"><!--    游戏下划线      -->
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/line</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
     </style>
 
 </resources>
