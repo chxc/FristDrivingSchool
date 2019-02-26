@@ -24,10 +24,10 @@ import intro.com.fristdrivingschool.tool.YCStringTool;
 
 public class GridViewAdapter extends PublicAdapter {
     private Context context;
-    private List<Home1Bean.DataBean.TodayBean.AppointmentBean> list;
+    private List<Home1Bean.DataBean.DateBean.AppointmentBean> list;
     private CustomDialog customDialog;
 
-    public GridViewAdapter(List<Home1Bean.DataBean.TodayBean.AppointmentBean> list, Context context) {
+    public GridViewAdapter(Context context,List<Home1Bean.DataBean.DateBean.AppointmentBean> list) {
         super(list);
         this.context = context;
         this.list = list;

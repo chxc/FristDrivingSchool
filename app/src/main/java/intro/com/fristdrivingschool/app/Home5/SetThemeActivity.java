@@ -1,20 +1,17 @@
-package intro.com.fristdrivingschool.app;
+package intro.com.fristdrivingschool.app.Home5;
 
 import android.os.Bundle;
 import android.view.View;
 
 import intro.com.fristdrivingschool.R;
 import intro.com.fristdrivingschool.base.BaseActivity;
-import intro.com.fristdrivingschool.tool.ActivityUntil;
+/**主题设置*/
+public class SetThemeActivity extends BaseActivity {
 
-/**评论输入页面*/
-public class CommentActivity extends BaseActivity {
-    private String schoolId;
-    private String coachId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_comment);
+        setContentView(R.layout.activity_set_theme);
     }
 
     @Override
@@ -24,17 +21,12 @@ public class CommentActivity extends BaseActivity {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.comment_title_back://返回
-                ActivityUntil.back(activity);
-                break;
-        }
+
     }
 
     @Override
     public void initData() {
-        schoolId=getIntent().getExtras().getString("schoolId");
-        coachId=getIntent().getExtras().getString("coachId");
+
     }
 
     @Override

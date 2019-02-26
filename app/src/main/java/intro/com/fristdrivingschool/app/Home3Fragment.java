@@ -1,6 +1,5 @@
 package intro.com.fristdrivingschool.app;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -13,6 +12,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import intro.com.fristdrivingschool.Custom.AutoListView.AutoListView;
 import intro.com.fristdrivingschool.R;
 import intro.com.fristdrivingschool.adapter.MessageBoardItemAdapter;
@@ -22,22 +22,22 @@ import intro.com.fristdrivingschool.tool.BaseFragment;
  * Created by HFZS on 2018/7/5.
  * 学习页面
  */
-
 public class Home3Fragment extends BaseFragment {
     View view;
-    private MyHolder myHolder;
-    private Context context;
-    List<String> list=new ArrayList<>();
+    @BindView(R.id.home3_layout_titleTV)
+    TextView home3LayoutTitleTV;
+    @BindView(R.id.home3_layout_messageBoard_listView)
+    AutoListView home3LayoutMessageBoardListView;
+    Unbinder unbinder;
+    private List<String> list = new ArrayList<>();
     private MessageBoardItemAdapter messageBoardItemAdapter;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.home3_layout, container, false);
-        context=getContext();
-        initView();
-        getData();
-        initEvent();
+        unbinder = ButterKnife.bind(this, view);
+        fristMethod();
         return view;
     }
 
@@ -48,9 +48,8 @@ public class Home3Fragment extends BaseFragment {
 
     @Override
     protected void initView() {
-        myHolder=new MyHolder(view);
-        messageBoardItemAdapter=new MessageBoardItemAdapter(list,context);
-        myHolder.home3LayoutMessageBoardListView.setAdapter(messageBoardItemAdapter);
+        messageBoardItemAdapter = new MessageBoardItemAdapter(list, activity);
+        home3LayoutMessageBoardListView.setAdapter(messageBoardItemAdapter);
     }
 
     @Override
@@ -66,13 +65,13 @@ public class Home3Fragment extends BaseFragment {
         list.add("");
         list.add("");
         messageBoardItemAdapter.notifyDataSetChanged();
-        myHolder.home3LayoutMessageBoardListView.setResultSize(list.size());
+        home3LayoutMessageBoardListView.setResultSize(list.size());
     }
 
     @Override
     protected void initEvent() {
         //下拉
-        myHolder.home3LayoutMessageBoardListView.setOnRefreshListener(new AutoListView.OnRefreshListener() {
+        home3LayoutMessageBoardListView.setOnRefreshListener(new AutoListView.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 list.clear();
@@ -81,13 +80,12 @@ public class Home3Fragment extends BaseFragment {
         });
 
         //上拉
-        myHolder.home3LayoutMessageBoardListView.setOnLoadListener(new AutoListView.OnLoadListener() {
+        home3LayoutMessageBoardListView.setOnLoadListener(new AutoListView.OnLoadListener() {
             @Override
             public void onLoadMore() {
                 getData();
             }
         });
-
     }
 
     @Override
@@ -95,14 +93,9 @@ public class Home3Fragment extends BaseFragment {
 
     }
 
-    class MyHolder {
-        @BindView(R.id.home3_layout_titleTV)
-        TextView home3LayoutTitleTV;
-        @BindView(R.id.home3_layout_messageBoard_listView)
-        AutoListView home3LayoutMessageBoardListView;
-
-        MyHolder(View view) {
-            ButterKnife.bind(this, view);
-        }
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
     }
 }

@@ -48,16 +48,19 @@
             />
 
         <TextView
+            android:id="@+id/home5_layout_appointment_feedBack"
             android:text="反馈"
             android:drawableLeft="@mipmap/icon_feedback"
             style="@style/style_personImfo"
             />
         <TextView
+            android:id="@+id/home5_layout_appointment_aboutUs"
             android:text="关于我们"
             android:drawableLeft="@mipmap/icon_about"
             style="@style/style_personImfo"
             />
         <TextView
+            android:id="@+id/home5_layout_appointment_setTheme"
             android:text="主题设置"
             android:drawableLeft="@mipmap/icon_theme_setting"
             style="@style/style_personImfo"

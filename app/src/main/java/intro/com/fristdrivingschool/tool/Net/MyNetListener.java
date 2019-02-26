@@ -17,6 +17,8 @@ import java.io.File;
 import java.util.Map;
 
 import intro.com.fristdrivingschool.Bean.MainBean;
+import intro.com.fristdrivingschool.tool.CustomToast;
+import intro.com.fristdrivingschool.tool.PublicClass;
 import intro.com.fristdrivingschool.tool.StaticValue;
 import intro.com.fristdrivingschool.tool.YCStringTool;
 
@@ -52,9 +54,13 @@ public class MyNetListener {
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError arg0) {
-                    if (netListener != null) {
-                        netListener.error(arg0.toString(),mark);
-                        YCStringTool.logi(this.getClass(),"请求失败"+arg0.toString());
+                    if(!PublicClass.isNetworkAvailable(context)){
+                        CustomToast.showToast(context,"请检查您的网络",2000);
+                        netListener.error("请检查您的网络",mark);
+                    }else {
+                        YCStringTool.logi(this.getClass(),"请求失败的原因" + arg0.toString());
+                        CustomToast.showToast(context, "请求超时！", 200);
+                        netListener.error(arg0.toString(), mark);
                     }
                 }
             }){

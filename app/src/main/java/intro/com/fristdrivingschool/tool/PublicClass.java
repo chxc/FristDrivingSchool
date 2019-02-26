@@ -40,8 +40,7 @@ public class PublicClass {
     /**
      * 判断是否有网络
      * */
-    public static boolean isNetworkAvailable(Activity activity) {
-        Context context = activity.getApplicationContext();
+    public static boolean isNetworkAvailable(Context context) {
         // 获取手机所有连接管理对象（包括对wi-fi,net等连接的管理）
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         if (connectivityManager == null) {

@@ -3,9 +3,9 @@ package intro.com.fristdrivingschool.base;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import intro.com.fristdrivingschool.Custom.SwipeBackActivity;
 import intro.com.fristdrivingschool.R;
 import intro.com.fristdrivingschool.tool.Net.MyNetListener;
 import intro.com.fristdrivingschool.tool.PublicClass;
@@ -16,7 +16,7 @@ import intro.com.fristdrivingschool.tool.SharedPreferencesUtils;
  * Created by HFZS on 2018/8/21.
  */
 
-public abstract class BaseActivity extends SwipeBackActivity implements View.OnClickListener,BaseFuncIml,MyNetListener.NetListener {
+public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener,BaseFuncIml,MyNetListener.NetListener {
 
     public Activity activity;
 

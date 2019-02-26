@@ -1,9 +1,10 @@
 package intro.com.fristdrivingschool.app;
 
-import android.app.Activity;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,10 +26,10 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import intro.com.fristdrivingschool.Bean.Home1Bean;
 import intro.com.fristdrivingschool.Custom.CustomDialog;
-import intro.com.fristdrivingschool.Custom.CustomGridView;
+import intro.com.fristdrivingschool.Custom.ViewPagerForScrollView;
 import intro.com.fristdrivingschool.R;
 import intro.com.fristdrivingschool.adapter.FlowLayoutTagAdapter;
-import intro.com.fristdrivingschool.adapter.GridViewAdapter;
+import intro.com.fristdrivingschool.adapter.HomeApponitmentDayViewPagerAdapter;
 import intro.com.fristdrivingschool.tool.BaseFragment;
 import intro.com.fristdrivingschool.tool.CustomToast;
 import intro.com.fristdrivingschool.tool.Net.MyNetListener;
@@ -44,105 +45,138 @@ import intro.com.fristdrivingschool.tool.YCStringTool;
 public class Home1Fragment extends BaseFragment implements MyNetListener.NetListener {
 
     Unbinder unbinder;
+    @BindView(R.id.home1_layout_drivingSchool)
+    TextView home1LayoutDrivingSchool;
+    @BindView(R.id.home1_layout_teacherIcon)
+    ImageView home1LayoutTeacherIcon;
+    @BindView(R.id.home1_layout_teacherName)
+    TextView home1LayoutTeacherName;
+    @BindView(R.id.home1_layout_teacherPhone)
+    TextView home1LayoutTeacherPhone;
+    @BindView(R.id.home1_layout_teacherLocation)
+    TextView home1LayoutTeacherLocation;
+    @BindView(R.id.home1_layout_teacherBelongTo)
+    TextView home1LayoutTeacherBelongTo;
+    @BindView(R.id.home1_layout_teacherPhoneIcon)
+    ImageView home1LayoutTeacherPhoneIcon;
+    @BindView(R.id.home1_layout_day_tab)
+    TabLayout home1LayoutDayTab;
+    @BindView(R.id.home1_layout_day_viewpager)
+    ViewPagerForScrollView home1LayoutDayViewPager;
+    @BindView(R.id.home1_layout_appointmentTime)
+    TextView home1LayoutAppointmentTime;
+    @BindView(R.id.home1_layout_teacherTag)
+    TagFlowLayout home1LayoutTeacherTag;
+    @BindView(R.id.home1_swipeRefresh)
+    SwipeRefreshLayout home1SwipeRefresh;
     private View view;
-    private ViewHolder holder;
-    private Activity context;
     private Home1Bean home1Bean;
-    private List<Home1Bean.DataBean.TodayBean.AppointmentBean> todatList;
-    private GridViewAdapter gridViewAdapter;
+    private HomeApponitmentDayViewPagerAdapter homeApponitmentDayViewPagerAdapter;
+    private ArrayList<Home1Bean.DataBean.DateBean> listDayAppointment = new ArrayList<>();
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.home1_layout, container, false);
-        holder = new ViewHolder(view);
-        context = getActivity();
         unbinder = ButterKnife.bind(this, view);
+        fristMethod();
         return view;
     }
 
     @Override
     protected void initData() {
-        SharedPreferencesUtils.savaString(context,SharedPreferencesUtils.USERID,"1");
+        SharedPreferencesUtils.savaString(activity, SharedPreferencesUtils.USERID, "1");
         getData(1);
     }
 
     @Override
     public void initView() {
-        //预约时间点
-        todatList = new ArrayList<>();
-        gridViewAdapter = new GridViewAdapter(todatList, context);
-        holder.home1LayoutClassGridview.setAdapter(gridViewAdapter);
+        //预约天数ViewPager
+        homeApponitmentDayViewPagerAdapter = new HomeApponitmentDayViewPagerAdapter(activity, listDayAppointment);
+        home1LayoutDayViewPager.setAdapter(homeApponitmentDayViewPagerAdapter);
+        home1LayoutDayTab.setupWithViewPager(home1LayoutDayViewPager, true);//设置关联ViewPagerTab
         //标签
         List<String> list1 = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             list1.add("标签" + i);
         }
-        FlowLayoutTagAdapter flowLayoutTagAdapter = new FlowLayoutTagAdapter(context, list1);
-        holder.home1LayoutTeacherTag.setAdapter(flowLayoutTagAdapter);
-        holder.home1LayoutTeacherBelongTo.getPaint().setFlags(Paint. UNDERLINE_TEXT_FLAG );//设置下划线
+        FlowLayoutTagAdapter flowLayoutTagAdapter = new FlowLayoutTagAdapter(activity, list1);
+        home1LayoutTeacherTag.setAdapter(flowLayoutTagAdapter);
+        home1LayoutTeacherBelongTo.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);//设置下划线
     }
 
     @Override
     public void getData(int... mark) {
-        switch (mark[0]){
+        switch (mark[0]) {
             case 1://获取首页数据
                 Map<String, String> loginMap = new HashMap<>();
-                loginMap.put("user_id", StaticValue.getUseId(context));
-                MyNetListener.getString(context,Request.Method.POST,this,
-                        StaticValue.home1,mark[0],loginMap);
+                loginMap.put("user_id", StaticValue.getUseId(activity));
+                MyNetListener.getString(activity, Request.Method.POST, this,
+                        StaticValue.home1, mark[0], loginMap);
                 break;
         }
     }
 
     @Override
     public void initEvent() {
-        holder.home1LayoutTeacherPhoneIcon.setOnClickListener(this);
-        holder.home1LayoutTeacherBelongTo.setOnClickListener(this);
-        holder.home1LayoutDrivingSchool.setOnClickListener(this);
-        holder.home1LayoutAppointmentTime.setOnClickListener(this);
-        holder.home1LayoutTeacherIcon.setOnClickListener(this);
+        home1LayoutTeacherPhoneIcon.setOnClickListener(this);
+        home1LayoutTeacherBelongTo.setOnClickListener(this);
+        home1LayoutDrivingSchool.setOnClickListener(this);
+        home1LayoutAppointmentTime.setOnClickListener(this);
+        home1LayoutTeacherIcon.setOnClickListener(this);
 
+        //下拉监听
+        home1SwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getData(1);
+            }
+        });
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.home1_layout_teacherPhoneIcon://教练电话
-                PublicClass.diallPhone(context, "13969531234");
-                break;
+        try {
+            switch (v.getId()) {
+                case R.id.home1_layout_teacherPhoneIcon://教练电话
+                    PublicClass.diallPhone(activity, home1Bean.getData().getCoachdata().getConnect());
+                    break;
 
-            case R.id.home1_layout_drivingSchool://驾校
-                PublicClass.openAppForPackageName(context,"com.rtk.app");
-                context.finish();
-                break;
+                case R.id.home1_layout_drivingSchool://驾校
+                    PublicClass.openAppForPackageName(activity, "com.rtk.app");
+                    activity.finish();
+                    break;
 
-            case R.id.home1_layout_appointmentTime://已预约的时间
-                final CustomDialog customDialog = new CustomDialog(context, R.style.CustomDialog);
-                customDialog.setMsg("您要取消预约吗？");
-                customDialog.setOnCancelListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        CustomToast.showToast(context, "取消", 2000);
-                        customDialog.dismiss();
-                    }
-                });
-                customDialog.setOnEnsureListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        CustomToast.showToast(context, "确定", 2000);
-                        customDialog.dismiss();
-                    }
-                });
-                customDialog.show();
-                break;
-            case R.id.home1_layout_teacherIcon://教练详情页
-                PublicClass.goToTeacherDetaisActivity(context,"1");
-                break;
-            case R.id.home1_layout_teacherBelongTo://驾校详情
-                PublicClass.goToSchoolDetailsActivity(context,"1",
-                        "某某驾校");
-                break;
+                case R.id.home1_layout_appointmentTime://已预约的时间
+                    final CustomDialog customDialog = new CustomDialog(activity, R.style.CustomDialog);
+                    customDialog.setMsg("您要取消预约吗？");
+                    customDialog.setOnCancelListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            CustomToast.showToast(activity, "取消", 2000);
+                            customDialog.dismiss();
+                        }
+                    });
+                    customDialog.setOnEnsureListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            CustomToast.showToast(activity, "确定", 2000);
+                            customDialog.dismiss();
+                        }
+                    });
+                    customDialog.show();
+                    break;
+                case R.id.home1_layout_teacherIcon://教练详情页
+                    PublicClass.goToTeacherDetaisActivity(activity, "1");
+                    break;
+                case R.id.home1_layout_teacherBelongTo://驾校详情
+                    PublicClass.goToSchoolDetailsActivity(activity, "1",
+                            "某某驾校");
+                    break;
+            }
+        }catch (NullPointerException e){
+            CustomToast.showToast(activity,"空指针",2000);
+
         }
     }
 
@@ -154,49 +188,26 @@ public class Home1Fragment extends BaseFragment implements MyNetListener.NetList
 
     @Override
     public void success(String str, int mark, int... position) {
-        switch (mark){
+        home1SwipeRefresh.setRefreshing(false);
+        switch (mark) {
             case 1://首页数据
-                YCStringTool.logi(this.getClass(),"首页数据"+str);
-                Gson gson=new GsonBuilder().enableComplexMapKeySerialization().create();
+                YCStringTool.logi(this.getClass(), "首页数据" + str);
+                Gson gson = new GsonBuilder().enableComplexMapKeySerialization().create();
                 home1Bean = gson.fromJson(str, Home1Bean.class);
-                todatList.addAll(home1Bean.getData().getToday().getAppointment());
-                holder.home1LayoutTeacherName.setText(home1Bean.getData().getCoachdata().getName());//教练名;
-                holder.home1LayoutTeacherPhone.setText(home1Bean.getData().getCoachdata().getConnect());//教练电话
-                holder.home1LayoutTeacherLocation.setText(home1Bean.getData().getCoachdata().getConnect());//教练电话
-                holder.home1LayoutTeacherLocation.setText(home1Bean.getData().getCoachdata().getConnect());//教练电话
-                holder.home1LayoutDrivingSchool.setText(home1Bean.getData().getCoachdata().getSchool());//驾校名
-                gridViewAdapter.notifyDataSetChanged();
+                //todatList.addAll(home1Bean.getData().getToday().getAppointment());
+                home1LayoutTeacherName.setText(home1Bean.getData().getCoachdata().getName());//教练名;
+                home1LayoutTeacherPhone.setText(home1Bean.getData().getCoachdata().getConnect());//教练电话
+                home1LayoutTeacherLocation.setText(home1Bean.getData().getCoachdata().getLocation());//教练地址
+                home1LayoutDrivingSchool.setText(home1Bean.getData().getCoachdata().getSchool());//驾校名
+                listDayAppointment.clear();
+                listDayAppointment.addAll(home1Bean.getData().getDate());
+                homeApponitmentDayViewPagerAdapter.notifyDataSetChanged();
                 break;
         }
     }
 
     @Override
     public void error(String str, int mark, int... position) {
-    }
-
-    class ViewHolder {
-        @BindView(R.id.home1_layout_teacherIcon)
-        ImageView home1LayoutTeacherIcon;
-        @BindView(R.id.home1_layout_teacherPhoneIcon)
-        ImageView home1LayoutTeacherPhoneIcon;
-        @BindView(R.id.home1_layout_drivingSchool)
-        TextView home1LayoutDrivingSchool;
-        @BindView(R.id.home1_layout_teacherName)
-        TextView home1LayoutTeacherName;
-        @BindView(R.id.home1_layout_teacherPhone)
-        TextView home1LayoutTeacherPhone;
-        @BindView(R.id.home1_layout_teacherLocation)
-        TextView home1LayoutTeacherLocation;
-        @BindView(R.id.home1_layout_teacherBelongTo)
-        TextView home1LayoutTeacherBelongTo;
-        @BindView(R.id.home1_layout_appointmentTime)
-        TextView home1LayoutAppointmentTime;
-        @BindView(R.id.home1_layout_class_gridview)
-        CustomGridView home1LayoutClassGridview;
-        @BindView(R.id.home1_layout_teacherTag)
-        TagFlowLayout home1LayoutTeacherTag;
-        ViewHolder(View view) {
-            ButterKnife.bind(this, view);
-        }
+        home1SwipeRefresh.setRefreshing(false);
     }
 }

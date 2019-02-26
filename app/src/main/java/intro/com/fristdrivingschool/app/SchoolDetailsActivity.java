@@ -1,7 +1,6 @@
 package intro.com.fristdrivingschool.app;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,7 +41,6 @@ public class SchoolDetailsActivity extends BaseActivity {
     CustomListView schoolDetailsConnect;
     @BindView(R.id.school_details_coach_list)
     CustomListView schoolDetailsCoachList;
-    private Context context;
     private String schoolId;
     private String schoolName;
     private List<Object> listSchoolAddress = new ArrayList<>();
@@ -59,19 +57,18 @@ public class SchoolDetailsActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_school_details);
         ButterKnife.bind(this);
-        context = this;
     }
 
     @Override
     protected void initTab() {
-        PublicClass.setThemeTopLayout(context, tagListTopLayout, null, null, ((ViewGroup) findViewById(android.R.id.content)).getChildAt(0));
+        PublicClass.setThemeTopLayout(activity, tagListTopLayout, null, null, ((ViewGroup) findViewById(android.R.id.content)).getChildAt(0));
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.school_details_title://返回
-                ActivityUntil.back((Activity) context);
+                ActivityUntil.back((Activity) activity);
                 break;
         }
 
@@ -101,21 +98,21 @@ public class SchoolDetailsActivity extends BaseActivity {
         listConnect.add("");
         listConnect.add("");
         listConnect.add("");
-        schoolConnectAdapter = new SchoolConnectAdapter(context, listConnect);
+        schoolConnectAdapter = new SchoolConnectAdapter(activity, listConnect);
         schoolDetailsConnect.setAdapter(schoolConnectAdapter);
 
         /* 地址 */
         listSchoolAddress.add(null);
         listSchoolAddress.add(null);
         listSchoolAddress.add(null);
-        schoolLocationAdapter = new SchoolLocationAdapter(context, listSchoolAddress);
+        schoolLocationAdapter = new SchoolLocationAdapter(activity, listSchoolAddress);
         schoolDetailsLocation.setAdapter(schoolLocationAdapter);
 
         /*  教练   */
         listCoach.add("");
         listCoach.add("");
         listCoach.add("");
-        coachAdapter=new CoachAdapter(context,listCoach);
+        coachAdapter=new CoachAdapter(activity,listCoach);
         schoolDetailsCoachList.setAdapter(coachAdapter);
     }
 

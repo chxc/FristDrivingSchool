@@ -22,9 +22,7 @@ public class Home4Fragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view=inflater.inflate(R.layout.home4_layout,container,false);
-        initEvent();
-        getData();
-        initView();
+        fristMethod();
         return view;
     }
 

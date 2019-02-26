@@ -24,7 +24,11 @@
         <activity android:name=".app.Home5.LoginActivity" />
         <activity android:name=".app.Home5.RegisterActivity" />
         <activity android:name=".app.SchoolDetailsActivity" />
-        <activity android:name=".app.CommentActivity"></activity>
+        <activity android:name=".app.CommentActivity" />
+        <activity android:name=".app.Home5.AppointmentHistoryActivity" />
+        <activity android:name=".app.Home5.FeedBackActivity" />
+        <activity android:name=".app.Home5.AboutUsActivity" />
+        <activity android:name=".app.Home5.SetThemeActivity"></activity>
     </application>
 
 </manifest>

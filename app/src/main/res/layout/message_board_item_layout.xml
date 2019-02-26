@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp"
+    style="@style/style_padding_10_5"
     >
 
     <ImageView
@@ -18,9 +18,8 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="vertical"
-        android:padding="10dp"
+        android:paddingLeft="10dp"
         >
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -33,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:text="学员A"
                 android:lines="1"
-                style="@style/style_content"
+                style="@style/style_tv2"
                 />
 
             <TextView
@@ -56,14 +55,13 @@
             android:id="@+id/message_board_item_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/style_content_name"
+            style="@style/style_content"
             android:text="教练不错"
             />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             >
             <!--   时间  -->
             <TextView
@@ -71,20 +69,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="2018-08-11  23：57"
-                style="@style/style_content"
+                style="@style/style_tv4"
                 android:textSize="12sp"
+                />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_weight="1"
                 />
 
             <TextView
                 android:id="@+id/message_board_item_reply"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/style_content_name"
+                style="@style/style_tv2"
                 android:text="回复Ta"
-                android:padding="10dp"
                 android:textSize="13sp"
                 />
-
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

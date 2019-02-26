@@ -1,7 +1,6 @@
 package intro.com.fristdrivingschool.app;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -57,7 +56,6 @@ public class TeacherDetaisActivity extends BaseActivity {
     LinearLayout activityTeacherDetais;
     @BindView(R.id.teacher_details_comment_btu)
     LinearLayout teacherDetailsCommentBtu;
-    private Context context;
     private String coach_id = "";//教练id
     private List<String> listCoachPicture;//教练照片
     private PictureAdapter pictureAdapter;
@@ -69,7 +67,6 @@ public class TeacherDetaisActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teacher_detais);
         ButterKnife.bind(this);
-        context = this;
     }
 
     @Override
@@ -77,7 +74,7 @@ public class TeacherDetaisActivity extends BaseActivity {
         Bundle bundle = getIntent().getExtras();
         coach_id = bundle.getString("coach_id");
         if (YCStringTool.isNull(coach_id)) {
-            CustomToast.showToast(context.getApplicationContext(), "暂无该教练信息", 2000);
+            CustomToast.showToast(activity.getApplicationContext(), "暂无该教练信息", 2000);
             finish();
         }
         getData(1);
@@ -87,10 +84,10 @@ public class TeacherDetaisActivity extends BaseActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.teacher_details_title://返回
-                ActivityUntil.back((Activity) context);
+                ActivityUntil.back((Activity) activity);
                 break;
             case R.id.teacher_details_comment_btu://跳转评论输入页面
-                PublicClass.goToCommentActivity((Activity) context,"","");
+                PublicClass.goToCommentActivity((Activity) activity,"","");
                 break;
         }
     }
@@ -109,7 +106,7 @@ public class TeacherDetaisActivity extends BaseActivity {
         listCoachPicture.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1550814177659&di=90b41f74376af8d2c07d3b2eda8d139e&imgtype=0&src=http%3A%2F%2Fmmbiz.qpic.cn%2Fmmbiz_jpg%2FaIUouuhnp7ssWaMe4xy6uicJvFLsFnOvEf0YaH56fyGQYhTgqxGtbFTfVpJaXmfrAZMg0TX3tskus3AhoCmcUibA%2F640%3Fwx_fmt%3Djpeg");
         listCoachPicture.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1550814177659&di=90b41f74376af8d2c07d3b2eda8d139e&imgtype=0&src=http%3A%2F%2Fmmbiz.qpic.cn%2Fmmbiz_jpg%2FaIUouuhnp7ssWaMe4xy6uicJvFLsFnOvEf0YaH56fyGQYhTgqxGtbFTfVpJaXmfrAZMg0TX3tskus3AhoCmcUibA%2F640%3Fwx_fmt%3Djpeg");
         listCoachPicture.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1550814177659&di=90b41f74376af8d2c07d3b2eda8d139e&imgtype=0&src=http%3A%2F%2Fmmbiz.qpic.cn%2Fmmbiz_jpg%2FaIUouuhnp7ssWaMe4xy6uicJvFLsFnOvEf0YaH56fyGQYhTgqxGtbFTfVpJaXmfrAZMg0TX3tskus3AhoCmcUibA%2F640%3Fwx_fmt%3Djpeg");
-        pictureAdapter = new PictureAdapter(context, listCoachPicture);
+        pictureAdapter = new PictureAdapter(activity, listCoachPicture);
         teacherDetailsPic.setAdapter(pictureAdapter);
 
         listStudentComment = new ArrayList<>();
@@ -118,7 +115,7 @@ public class TeacherDetaisActivity extends BaseActivity {
         listStudentComment.add("学员车神" + 3);
         listStudentComment.add("学员车神" + 4);
         listStudentComment.add("学员车神" + 5);
-        studentCommentAdapter = new StudentCommentAdapter(context, listStudentComment);
+        studentCommentAdapter = new StudentCommentAdapter(activity, listStudentComment);
         teacherDetailsComment.setAdapter(studentCommentAdapter);
     }
 
@@ -132,7 +129,7 @@ public class TeacherDetaisActivity extends BaseActivity {
             case 1:
                 Map<String, String> coachMap = new HashMap<>();
                 coachMap.put("coach_id", coach_id);
-                MyNetListener.getString(context, Request.Method.POST, this, StaticValue.coachDetails, mark[0], coachMap);
+                MyNetListener.getString(activity, Request.Method.POST, this, StaticValue.coachDetails, mark[0], coachMap);
                 break;
         }
     }

@@ -1,18 +1,28 @@
 package intro.com.fristdrivingschool.tool;
 
+import android.app.Activity;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 /**
  * Created by HFZS on 2018/7/17.
  */
 
 public abstract class BaseFragment extends Fragment implements View.OnClickListener {
+    protected Activity activity;
+
+    @Nullable
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return super.onCreateView(inflater, container, savedInstanceState);
+    }
+    protected void fristMethod(){
+        activity=getActivity();
         initData();
         initView();
         initEvent();

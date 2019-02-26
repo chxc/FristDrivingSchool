@@ -50,6 +50,7 @@ public class YCStringTool {
     }
 
     public static String forMatTimeData(long time) {
+        time*=1000;
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         return formatter.format(time);
     }

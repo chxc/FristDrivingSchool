@@ -212,6 +212,14 @@
         <item name="android:src">@mipmap/icon_head</item>
     </style>
 
+    <!--   左侧线条    -->
+    <style name="style_left_Tvline">
+        <item name="android:layout_width">3dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/theme1</item>
+        <item name="android:layout_marginRight">5dp</item>
+    </style>
+
     <style name="style_tv1">
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/drak333</item>

@@ -1,6 +1,6 @@
 package intro.com.fristdrivingschool.adapter;
 
-import android.content.Context;
+import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -18,17 +18,17 @@ import intro.com.fristdrivingschool.R;
 
 public class FlowLayoutTagAdapter extends TagAdapter<String> {
     private List<String> list;
-    private Context context;
-    public FlowLayoutTagAdapter(Context context,List<String> list) {
+    private Activity activity;
+    public FlowLayoutTagAdapter(Activity activity,List<String> list) {
         super(list);
-        this.context=context;
+        this.activity=activity;
         this.list=list;
     }
 
 
     @Override
     public View getView(FlowLayout parent, int position, String s) {
-        View view=LayoutInflater.from(context).inflate(R.layout.tag_item_layout,parent,false);
+        View view=LayoutInflater.from(activity).inflate(R.layout.tag_item_layout,parent,false);
         switch (position%5) {
             case 0:
                 view.setBackgroundResource(R.drawable.shape_solid_color1_5dp);
