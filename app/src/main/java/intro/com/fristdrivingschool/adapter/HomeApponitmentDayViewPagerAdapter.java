@@ -43,7 +43,7 @@ public class HomeApponitmentDayViewPagerAdapter extends PagerAdapter {
     public Object instantiateItem(ViewGroup container, int position) {
         View view = LayoutInflater.from(context).inflate(R.layout.home1_day_appointment_item_layout, null);
         ViewHolder viewHolder=new ViewHolder(view);
-        GridViewAdapter gridViewAdapter = new GridViewAdapter(context,list.get(position).getAppointment());
+        AppointmentTimeGridViewAdapter gridViewAdapter = new AppointmentTimeGridViewAdapter(context,list.get(position).getAppointment());
         viewHolder.home1DayAppointmentItemGridview.setAdapter(gridViewAdapter );
         container.addView(view);
         return view;

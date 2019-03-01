@@ -89,6 +89,10 @@ public class TeacherDetaisActivity extends BaseActivity {
             case R.id.teacher_details_comment_btu://跳转评论输入页面
                 PublicClass.goToCommentActivity((Activity) activity,"","");
                 break;
+
+            case R.id.teacher_details_BelongTo://跳转驾校
+                PublicClass.goToSchoolDetailsActivity(activity, "1","某某驾校");
+                break;
         }
     }
 

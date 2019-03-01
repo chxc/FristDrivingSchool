@@ -123,6 +123,31 @@
                 android:text="@string/home1_driving_intro"
                 android:textSize="12sp" />
 
+            <View
+                style="@style/style_line"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/style_padding_10_5"
+                >
+                <View
+                    style="@style/style_left_Tvline"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/style_tv2"
+                    android:text="场地"
+                    />
+            </LinearLayout>
+            <!--   训练场地  -->
+            <intro.com.fristdrivingschool.Custom.CustomListView
+                android:id="@+id/school_details_training_ground"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
             <!--   教练列表    -->
             <TextView
                 style="@style/style_content_name"

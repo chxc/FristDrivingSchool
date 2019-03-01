@@ -25,11 +25,14 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import intro.com.fristdrivingschool.Bean.Home1Bean;
-import intro.com.fristdrivingschool.Custom.CustomDialog;
+import intro.com.fristdrivingschool.Custom.CustomListView;
 import intro.com.fristdrivingschool.Custom.ViewPagerForScrollView;
 import intro.com.fristdrivingschool.R;
 import intro.com.fristdrivingschool.adapter.FlowLayoutTagAdapter;
+import intro.com.fristdrivingschool.adapter.HaveAppointmentAdapter;
 import intro.com.fristdrivingschool.adapter.HomeApponitmentDayViewPagerAdapter;
+import intro.com.fristdrivingschool.app.Home5.AppointmentHistoryActivity;
+import intro.com.fristdrivingschool.tool.ActivityUntil;
 import intro.com.fristdrivingschool.tool.BaseFragment;
 import intro.com.fristdrivingschool.tool.CustomToast;
 import intro.com.fristdrivingschool.tool.Net.MyNetListener;
@@ -63,16 +66,19 @@ public class Home1Fragment extends BaseFragment implements MyNetListener.NetList
     TabLayout home1LayoutDayTab;
     @BindView(R.id.home1_layout_day_viewpager)
     ViewPagerForScrollView home1LayoutDayViewPager;
-    @BindView(R.id.home1_layout_appointmentTime)
-    TextView home1LayoutAppointmentTime;
     @BindView(R.id.home1_layout_teacherTag)
     TagFlowLayout home1LayoutTeacherTag;
     @BindView(R.id.home1_swipeRefresh)
     SwipeRefreshLayout home1SwipeRefresh;
+    @BindView(R.id.home1_layout_appointmentTime)
+    CustomListView home1LayoutAppointmentTime;
+    @BindView(R.id.home1_layout_appointmentHistory)
+    TextView home1LayoutAppointmentHistory;
     private View view;
     private Home1Bean home1Bean;
     private HomeApponitmentDayViewPagerAdapter homeApponitmentDayViewPagerAdapter;
     private ArrayList<Home1Bean.DataBean.DateBean> listDayAppointment = new ArrayList<>();
+    private HaveAppointmentAdapter haveAppointmentAdapter;
 
     @Nullable
     @Override
@@ -103,6 +109,9 @@ public class Home1Fragment extends BaseFragment implements MyNetListener.NetList
         FlowLayoutTagAdapter flowLayoutTagAdapter = new FlowLayoutTagAdapter(activity, list1);
         home1LayoutTeacherTag.setAdapter(flowLayoutTagAdapter);
         home1LayoutTeacherBelongTo.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);//设置下划线
+
+        haveAppointmentAdapter = new HaveAppointmentAdapter(activity, list1);//已预约
+        home1LayoutAppointmentTime.setAdapter(haveAppointmentAdapter);
     }
 
     @Override
@@ -122,8 +131,8 @@ public class Home1Fragment extends BaseFragment implements MyNetListener.NetList
         home1LayoutTeacherPhoneIcon.setOnClickListener(this);
         home1LayoutTeacherBelongTo.setOnClickListener(this);
         home1LayoutDrivingSchool.setOnClickListener(this);
-        home1LayoutAppointmentTime.setOnClickListener(this);
         home1LayoutTeacherIcon.setOnClickListener(this);
+        home1LayoutAppointmentHistory.setOnClickListener(this);
 
         //下拉监听
         home1SwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -146,26 +155,6 @@ public class Home1Fragment extends BaseFragment implements MyNetListener.NetList
                     PublicClass.openAppForPackageName(activity, "com.rtk.app");
                     activity.finish();
                     break;
-
-                case R.id.home1_layout_appointmentTime://已预约的时间
-                    final CustomDialog customDialog = new CustomDialog(activity, R.style.CustomDialog);
-                    customDialog.setMsg("您要取消预约吗？");
-                    customDialog.setOnCancelListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            CustomToast.showToast(activity, "取消", 2000);
-                            customDialog.dismiss();
-                        }
-                    });
-                    customDialog.setOnEnsureListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            CustomToast.showToast(activity, "确定", 2000);
-                            customDialog.dismiss();
-                        }
-                    });
-                    customDialog.show();
-                    break;
                 case R.id.home1_layout_teacherIcon://教练详情页
                     PublicClass.goToTeacherDetaisActivity(activity, "1");
                     break;
@@ -173,9 +162,13 @@ public class Home1Fragment extends BaseFragment implements MyNetListener.NetList
                     PublicClass.goToSchoolDetailsActivity(activity, "1",
                             "某某驾校");
                     break;
+                case R.id.home1_layout_appointmentHistory://预约历史
+                    ActivityUntil.next(activity,AppointmentHistoryActivity.class,null);
+                    break;
+
             }
-        }catch (NullPointerException e){
-            CustomToast.showToast(activity,"空指针",2000);
+        } catch (NullPointerException e) {
+            CustomToast.showToast(activity, "空指针", 2000);
 
         }
     }

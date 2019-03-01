@@ -22,12 +22,12 @@ import intro.com.fristdrivingschool.tool.YCStringTool;
  * Created by HFZS on 2018/7/5.
  */
 
-public class GridViewAdapter extends PublicAdapter {
+public class AppointmentTimeGridViewAdapter extends PublicAdapter {
     private Context context;
     private List<Home1Bean.DataBean.DateBean.AppointmentBean> list;
     private CustomDialog customDialog;
 
-    public GridViewAdapter(Context context,List<Home1Bean.DataBean.DateBean.AppointmentBean> list) {
+    public AppointmentTimeGridViewAdapter(Context context, List<Home1Bean.DataBean.DateBean.AppointmentBean> list) {
         super(list);
         this.context = context;
         this.list = list;
@@ -41,7 +41,7 @@ public class GridViewAdapter extends PublicAdapter {
             holder.appointmentGridviewItem.setEnabled(true);
         }
         holder.appointmentGridviewTime.setText(list.get(position).getTime());
-        holder.appointmentGridviewNum.setText(list.get(position).getNotNum()+"/"+list.get(position).getHasNum());
+        holder.appointmentGridviewNum.setText(list.get(position).getHasNum()+"/"+list.get(position).getNotNum());
         holder.appointmentGridviewItem.setOnClickListener(new MyListener(position,2));
         return convertView;
     }
@@ -72,10 +72,9 @@ public class GridViewAdapter extends PublicAdapter {
                     customDialog=new CustomDialog(context);
                     customDialog.setOnEnsureListener(new MyListener(position,0));
                     customDialog.setOnCancelListener(new MyListener(position,1));
-                    customDialog.setMsg("请确定预约时间点12：00-12：40");
+                    customDialog.setMsg(list.get(position).getTime());
                     customDialog.show();
                     break;
-
             }
         }
     }

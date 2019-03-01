@@ -4,11 +4,14 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.youth.banner.Banner;
+import com.youth.banner.BannerConfig;
+import com.youth.banner.Transformer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +23,7 @@ import intro.com.fristdrivingschool.R;
 import intro.com.fristdrivingschool.adapter.CoachAdapter;
 import intro.com.fristdrivingschool.adapter.SchoolConnectAdapter;
 import intro.com.fristdrivingschool.adapter.SchoolLocationAdapter;
+import intro.com.fristdrivingschool.adapter.SchoolTrainingGroundAdapter;
 import intro.com.fristdrivingschool.base.BaseActivity;
 import intro.com.fristdrivingschool.tool.ActivityUntil;
 import intro.com.fristdrivingschool.tool.GlideImageLoader;
@@ -41,6 +45,8 @@ public class SchoolDetailsActivity extends BaseActivity {
     CustomListView schoolDetailsConnect;
     @BindView(R.id.school_details_coach_list)
     CustomListView schoolDetailsCoachList;
+    @BindView(R.id.school_details_training_ground)
+    CustomListView schoolDetailsTrainingGround;
     private String schoolId;
     private String schoolName;
     private List<Object> listSchoolAddress = new ArrayList<>();
@@ -51,6 +57,8 @@ public class SchoolDetailsActivity extends BaseActivity {
     private List<String> listCoach = new ArrayList<>();
     private SchoolConnectAdapter schoolConnectAdapter;
     private CoachAdapter coachAdapter;
+    private List<String> listTrainingGround;
+    private SchoolTrainingGroundAdapter schoolTrainingGroundAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +74,7 @@ public class SchoolDetailsActivity extends BaseActivity {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.school_details_title://返回
                 ActivityUntil.back((Activity) activity);
                 break;
@@ -91,6 +99,8 @@ public class SchoolDetailsActivity extends BaseActivity {
         listTitle.add("大厅");
         listTitle.add("车辆");
         listTitle.add("训练场地");
+        schoolDetailsBanner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE);
+        schoolDetailsBanner.setBannerAnimation(Transformer.CubeOut);
         schoolDetailsBanner.setBannerTitles(listTitle);//banner标题
         schoolDetailsBanner.start();
 
@@ -112,13 +122,26 @@ public class SchoolDetailsActivity extends BaseActivity {
         listCoach.add("");
         listCoach.add("");
         listCoach.add("");
-        coachAdapter=new CoachAdapter(activity,listCoach);
+        coachAdapter = new CoachAdapter(activity, listCoach);
         schoolDetailsCoachList.setAdapter(coachAdapter);
+
+        listTrainingGround=new ArrayList<>();
+        listTrainingGround.add("");
+        listTrainingGround.add("");
+        listTrainingGround.add("");
+        schoolTrainingGroundAdapter=new SchoolTrainingGroundAdapter(activity,listTrainingGround);
+        schoolDetailsTrainingGround.setAdapter(schoolTrainingGroundAdapter);
     }
 
     @Override
     public void initListener() {
-
+        //教练详情
+        schoolDetailsCoachList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                PublicClass.goToTeacherDetaisActivity(activity, "1");
+            }
+        });
     }
 
     @Override

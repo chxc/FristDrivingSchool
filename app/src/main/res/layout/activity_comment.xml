@@ -6,7 +6,10 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context=".app.CommentActivity">
+    tools:context=".app.CommentActivity"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    >
 
     <LinearLayout
         android:id="@+id/comment_top_layout"
@@ -20,12 +23,45 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="评价输入" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/comment_title_submit"
+            style="@style/style_title_btu"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:onClick="onClick"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="提交"
+            android:textSize="16sp" />
+
     </LinearLayout>
 
     <RatingBar
+        android:id="@+id/comment_star_level"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="10dp"
         android:max="5" />
 
+    <TextView
+        android:id="@+id/comment_level_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="五星好评" />
 
+    <EditText
+        android:id="@+id/comment_content_edit"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:layout_margin="10dp"
+        android:gravity="top"
+        android:background="@drawable/shape_corner_edit" />
 </LinearLayout>
